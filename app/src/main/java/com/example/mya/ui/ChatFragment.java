@@ -1,0 +1,72 @@
+package com.example.mya.ui;
+
+import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.example.mya.R;
+import com.example.mya.data.model.UserModel;
+import com.example.mya.ui.adapter.ChatAdapter;
+
+import java.util.ArrayList;
+
+
+public class ChatFragment extends Fragment {
+    RecyclerView chatRecycler;
+    ArrayList<UserModel>users=new ArrayList<>();
+    ChatAdapter chatAdapter;
+
+
+    public ChatFragment() {
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_chat, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        setupRecycler(view);
+
+    }
+    private void setupRecycler(View view){
+        users.add(new UserModel(R.drawable.ee,"sahar","hi"));
+        users.add(new UserModel(R.drawable.nn,"lolo","ok"));
+        users.add(new UserModel(R.drawable.pp,"maha","hallo"));
+        users.add(new UserModel(R.drawable.tt,"dalia","merci"));
+        users.add(new UserModel(R.drawable.ic_launcher_background,"sherien","hi"));
+        users.add(new UserModel(R.drawable.ee,"soso","thank"));
+        users.add(new UserModel(R.drawable.ii,"sara","ooooooo"));
+        users.add(new UserModel(R.drawable.rr,"noga","hi"));
+        users.add(new UserModel(R.drawable.ic_launcher_background,"sahar","hi"));
+        users.add(new UserModel(R.drawable.nn,"sahar","by"));
+        users.add(new UserModel(R.drawable.ic_launcher_background,"sahar","oky"));
+
+
+        chatRecycler=view.findViewById(R.id.chat_recycle);
+        chatAdapter =new ChatAdapter(users);
+        chatRecycler.setAdapter(chatAdapter);
+        chatRecycler.setLayoutManager(new LinearLayoutManager(requireContext()));
+
+
+
+    }
+}
