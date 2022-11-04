@@ -9,8 +9,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.mya.R;
 import com.example.mya.data.model.UserStatusModel;
@@ -20,10 +24,9 @@ import java.util.ArrayList;
 
 
 public class StatusFragment extends Fragment {
-           RecyclerView statusRecycle;
-           ArrayList<UserStatusModel>status =new ArrayList<>();
-           StatusAdapter statusAdapter;
-
+    RecyclerView statusRecycle;
+    ArrayList<UserStatusModel> status = new ArrayList<>();
+    StatusAdapter statusAdapter;
 
 
     public StatusFragment() {
@@ -31,12 +34,30 @@ public class StatusFragment extends Fragment {
     }
 
 
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
         super.onCreate(savedInstanceState);
 
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.option_status_item,menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+       int id = item.getItemId();
+       if (id == R.id.status){
+           Toast.makeText(getActivity(),"status privacy",Toast.LENGTH_SHORT).show();
+       }
+       else if (id == R.id.setting_btnn){
+            Toast.makeText(getActivity(),"Setting",Toast.LENGTH_SHORT).show();
+        }
+
+            return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -53,39 +74,33 @@ public class StatusFragment extends Fragment {
         setupRecycler(view);
     }
 
-    private  void setupRecycler(View view){
-        status.add(new UserStatusModel(R.drawable.ic_launcher_background,"sahar","3 minutes ago"));
-        status.add(new UserStatusModel(R.drawable.rr,"lolo","now"));
+    private void setupRecycler(View view) {
+        status.add(new UserStatusModel(R.drawable.ic_launcher_background, "sahar", "3 minutes ago"));
+        status.add(new UserStatusModel(R.drawable.rr, "lolo", "now"));
 
-        status.add(new UserStatusModel(R.drawable.pp,"maha","20 minutes ago"));
+        status.add(new UserStatusModel(R.drawable.pp, "maha", "20 minutes ago"));
 
-        status.add(new UserStatusModel(R.drawable.ic_launcher_foreground,"dalia","now"));
+        status.add(new UserStatusModel(R.drawable.ic_launcher_foreground, "dalia", "now"));
 
-        status.add(new UserStatusModel(R.drawable.ee,"sherien","now"));
+        status.add(new UserStatusModel(R.drawable.ee, "sherien", "now"));
 
-        status.add(new UserStatusModel(R.drawable.ic_launcher_background,"sos","35minutes ago"));
+        status.add(new UserStatusModel(R.drawable.ic_launcher_background, "sos", "35minutes ago"));
 
-        status.add(new UserStatusModel(R.drawable.nn,"noga","30 minutes ago"));
+        status.add(new UserStatusModel(R.drawable.nn, "noga", "30 minutes ago"));
 
-        status.add(new UserStatusModel(R.drawable.ii,"sahar","11 minutes ago"));
+        status.add(new UserStatusModel(R.drawable.ii, "sahar", "11 minutes ago"));
 
-        status.add(new UserStatusModel(R.drawable.ic_launcher_background,"sahar","5 minutes ago"));
+        status.add(new UserStatusModel(R.drawable.ic_launcher_background, "sahar", "5 minutes ago"));
 
-        status.add(new UserStatusModel(R.drawable.nn,"sahar","45 minutes ago"));
-        status.add(new UserStatusModel(R.drawable.ii,"sahar","55 minutes ago"));
-        status.add(new UserStatusModel(R.drawable.ic_launcher_background,"sahar","56 minutes ago"));
-        status.add(new UserStatusModel(R.drawable.pp,"sahar","one hours"));
+        status.add(new UserStatusModel(R.drawable.nn, "sahar", "45 minutes ago"));
+        status.add(new UserStatusModel(R.drawable.ii, "sahar", "55 minutes ago"));
+        status.add(new UserStatusModel(R.drawable.ic_launcher_background, "sahar", "56 minutes ago"));
+        status.add(new UserStatusModel(R.drawable.pp, "sahar", "one hours"));
 
-
-
-        statusRecycle=view.findViewById(R.id.status_recycle);
-        statusAdapter=new StatusAdapter(status);
+        statusRecycle = view.findViewById(R.id.status_recycle);
+        statusAdapter = new StatusAdapter(status);
         statusRecycle.setAdapter(statusAdapter);
         statusRecycle.setLayoutManager(new LinearLayoutManager(requireContext()));
-
-
-
-
-
     }
+
 }

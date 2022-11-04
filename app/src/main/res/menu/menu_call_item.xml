@@ -14,31 +14,10 @@
         android:title="@string/search"
         app:showAsAction="ifRoom"/>
 
-
     <item
-        android:id="@+id/group_btn"
-        android:title="@string/new_group"/>
-
+        android:id="@+id/link"
+        android:title="Clear call log"/>
     <item
-        android:id="@+id/new_btn"
-        android:title="@string/new_broadcast"/>
-
-    <item
-        android:id="@+id/linked_btn"
-        android:title="@string/linked_devices"/>
-
-    <item
-        android:id="@+id/starred_message_btn"
-        android:title="@string/start_message"/>
-
-    <item
-        android:id="@+id/setting_btn"
-        android:title="@string/settings"/>
-
-
-
-
-
-
-
+        android:id="@+id/settingg"
+        android:title="Settings"/>
 </menu>

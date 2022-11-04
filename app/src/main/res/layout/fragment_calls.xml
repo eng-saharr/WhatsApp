@@ -3,12 +3,68 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.CallsFragment">
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/call_recycle"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:listitem="@layout/item_calls_layout"/>
+        android:layout_height="wrap_content">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/creat_call"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:src="@drawable/cal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/call_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create call link"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_15ssp"
+            app:layout_constraintStart_toEndOf="@id/creat_call"
+            app:layout_constraintTop_toTopOf="@id/creat_call"
+            app:layout_constraintBottom_toBottomOf="@id/creat_call"
+            />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/call_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:text="share a link for you whatsapp call"
+            android:textSize="@dimen/_13ssp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@id/creat_call"
+            app:layout_constraintTop_toBottomOf="@id/call_user"
+            app:layout_constraintTop_toTopOf="@id/call_user"/>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/line_call"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Recent "
+            android:textColor="@color/black"
+            android:textSize="@dimen/_15sdp"
+            android:layout_margin="@dimen/_4sdp"
+            app:layout_constraintTop_toBottomOf="@id/creat_call"
+            app:layout_constraintStart_toStartOf="parent"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/call_recycle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/item_calls_layout"
+            app:layout_constraintTop_toBottomOf="@id/line_call"
+            />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/call"
         android:layout_width="@dimen/_50sdp"

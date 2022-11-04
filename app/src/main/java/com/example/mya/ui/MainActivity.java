@@ -28,15 +28,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(@NonNull Menu menu) {
-        getMenuInflater().inflate(R.menu.option_menu_items,menu);
-        return super.onCreateOptionsMenu(menu);
-    }
+
 
         private void initViewPager(){
         viewPagerAdapter=new MainViewPagerAdapter(getSupportFragmentManager(),
-                this.getLifecycle(),3);
+                this.getLifecycle(),4);
         mainViewpager=findViewById(R.id.view_pager);
         mainViewpager.setAdapter(viewPagerAdapter);
         tabLayout=findViewById(R.id.tab_layout);
@@ -78,23 +74,7 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         mainViewpager.unregisterOnPageChangeCallback(onPageChangeCallback);
     }
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId()==R.id.group_btn){
-            Toast.makeText(this,"new group",Toast.LENGTH_SHORT).show();
 
-        }else if(item.getItemId()==R.id.new_btn) {
-            Toast.makeText(this, "new broadcast", Toast.LENGTH_SHORT).show();
-        }else if(item.getItemId()==R.id.linked_btn) {
-            Toast.makeText(this, "linked devices", Toast.LENGTH_SHORT).show();
-        }else if(item.getItemId()==R.id.starred_message_btn) {
-            Toast.makeText(this, "start messsage", Toast.LENGTH_SHORT).show();
-        }else if(item.getItemId()==R.id.setting_btn) {
-            Toast.makeText(this, "setting", Toast.LENGTH_SHORT).show();
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
 
 

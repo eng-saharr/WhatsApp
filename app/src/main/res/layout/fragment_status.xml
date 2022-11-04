@@ -1,42 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="@dimen/_5sdp"
+    android:padding="@dimen/_5sdp"
     tools:context=".ui.StatusFragment">
 
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:ignore="MissingConstraints">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/mystatus"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:src="@drawable/stat"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/user_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My status"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16ssp"
+            app:layout_constraintStart_toEndOf="@id/mystatus"
+            app:layout_constraintTop_toTopOf="@id/mystatus"
+            app:layout_constraintBottom_toBottomOf="@id/mystatus"
+            />
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/status_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:text="@string/_30minutes_ago"
+        android:textSize="@dimen/_15ssp"
+        android:textColor="@color/black"
+        android:textStyle="normal"
+        app:layout_constraintStart_toEndOf="@id/mystatus"
+        app:layout_constraintTop_toBottomOf="@id/user_status"
+        app:layout_constraintTop_toTopOf="@id/user_status"/>
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Recent updates"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_15sdp"
+        android:layout_margin="@dimen/_4sdp"
+        app:layout_constraintTop_toBottomOf="@id/mystatus"
+        app:layout_constraintStart_toStartOf="parent"
 
+        />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/status_recycle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/item_status_layout" />
-
+        tools:listitem="@layout/item_status_layout"
+        app:layout_constraintTop_toBottomOf="@id/line"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/pen"
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
-        android:layout_gravity="left"
-        android:layout_margin="@dimen/_250sdp"
-        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="@dimen/_60sdp"
         android:backgroundTint="@color/white"
-        android:src="@drawable/icon_create_write" />
+        android:src="@drawable/icon_create_write"
+        android:tint="@color/white"
+        tools:ignore="MissingConstraints" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/camera"
-        android:layout_width="@dimen/_50sdp"
-        android:layout_height="@dimen/_50sdp"
-        android:layout_margin="@dimen/_15sdp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
+        android:layout_margin="@dimen/_15sdp"
         android:backgroundTint="#24D467"
+        android:src="@drawable/icon_camera"
         android:tint="@color/white"
-        android:src="@drawable/icon_camera"/>
-
-
-
-
-
-
-
+        tools:ignore="MissingConstraints" />
 
 </FrameLayout>

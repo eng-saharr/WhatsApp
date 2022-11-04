@@ -8,6 +8,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.example.mya.ui.CallsFragment;
 import com.example.mya.ui.ChatFragment;
+import com.example.mya.ui.GroupFragment;
 import com.example.mya.ui.StatusFragment;
 
 public class MainViewPagerAdapter extends FragmentStateAdapter {
@@ -25,10 +26,12 @@ public class MainViewPagerAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position){
             case 0:
-                return new ChatFragment();
+                return new GroupFragment();
             case 1:
-                return new StatusFragment();
+                return new ChatFragment();
             case 2:
+                return new StatusFragment();
+            case 3:
                 return new CallsFragment();
         }
 

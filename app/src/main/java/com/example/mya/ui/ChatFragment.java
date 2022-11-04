@@ -9,8 +9,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.mya.R;
 import com.example.mya.data.model.UserModel;
@@ -30,6 +34,7 @@ public class ChatFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
         super.onCreate(savedInstanceState);
 
     }
@@ -65,8 +70,29 @@ public class ChatFragment extends Fragment {
         chatAdapter =new ChatAdapter(users);
         chatRecycler.setAdapter(chatAdapter);
         chatRecycler.setLayoutManager(new LinearLayoutManager(requireContext()));
+    }
 
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.option_menu_items,menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id=item.getItemId();
+        if (id == R.id.group_btn){
+            Toast.makeText(getActivity(),"new group",Toast.LENGTH_SHORT).show();
+        }else if (id ==R.id.new_btn){
+            Toast.makeText(getActivity(),"new broadcast",Toast.LENGTH_SHORT).show();
+        }else if (id==R.id.linked_btn){
+            Toast.makeText(getActivity(),"linked device",Toast.LENGTH_SHORT).show();
+        }else if (id==R.id.message){
+            Toast.makeText(getActivity(),"start message",Toast.LENGTH_SHORT).show();
+        }else if (id==R.id.setting_btn){
+            Toast.makeText(getActivity(),"settings",Toast.LENGTH_SHORT).show();
+        }
 
+        return super.onOptionsItemSelected(item);
     }
 }
